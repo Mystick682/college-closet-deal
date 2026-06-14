@@ -26,7 +26,7 @@ function ConversationPage() {
     queryKey: ["conv", id],
     queryFn: async () => {
       const { data } = await supabase.from("conversations")
-        .select("*, listing:listings(id, title, price, currency), buyer:profiles!conversations_buyer_id_fkey(id, display_name), seller:profiles!conversations_seller_id_fkey(id, display_name)")
+        .select("*, listing:listings(id, title, price, currency), buyer:profiles!conversations_buyer_profile_fk(id, display_name), seller:profiles!conversations_seller_profile_fk(id, display_name)")
         .eq("id", id).single();
       return data;
     },

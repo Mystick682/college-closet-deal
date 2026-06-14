@@ -37,7 +37,7 @@ function ListingDetail() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("listings")
-        .select("*, university:universities(name, short_name, country, city), category:categories(name), seller:profiles!listings_seller_id_fkey(id, display_name, avatar_url, bio), images:listing_images(url, sort_order)")
+        .select("*, university:universities(name, short_name, country, city), category:categories(name), seller:profiles!listings_seller_profile_fk(id, display_name, avatar_url, bio), images:listing_images(url, sort_order)")
         .eq("id", id)
         .single();
       if (error) throw error;
@@ -55,7 +55,7 @@ function ListingDetail() {
     queryFn: async () => {
       const { data } = await supabase
         .from("reviews")
-        .select("*, reviewer:profiles!reviews_reviewer_id_fkey(display_name, avatar_url)")
+        .select("*, reviewer:profiles!reviews_reviewer_profile_fk(display_name, avatar_url)")
         .eq("seller_id", sellerId!)
         .order("created_at", { ascending: false });
       return data ?? [];

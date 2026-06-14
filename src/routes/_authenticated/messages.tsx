@@ -20,7 +20,7 @@ function MessagesPage() {
       if (!user) return [];
       const { data, error } = await supabase
         .from("conversations")
-        .select("*, listing:listings(title), buyer:profiles!conversations_buyer_id_fkey(id, display_name, avatar_url), seller:profiles!conversations_seller_id_fkey(id, display_name, avatar_url)")
+        .select("*, listing:listings(title), buyer:profiles!conversations_buyer_profile_fk(id, display_name, avatar_url), seller:profiles!conversations_seller_profile_fk(id, display_name, avatar_url)")
         .or(`buyer_id.eq.${user.id},seller_id.eq.${user.id}`)
         .order("last_message_at", { ascending: false });
       if (error) throw error;
