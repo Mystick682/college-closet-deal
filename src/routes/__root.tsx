@@ -83,9 +83,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "The student-only marketplace. Buy and sell textbooks, electronics, furniture and more with verified university students." },
       { name: "author", content: "UniTrade" },
       { property: "og:title", content: "UniTrade — Buy & sell with your campus" },
-      { property: "og:description", content: "The student-only marketplace for verified university students." },
+      { property: "og:description", content: "The student-only marketplace. Buy and sell textbooks, electronics, furniture and more with verified university students." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "UniTrade — Buy & sell with your campus" },
+      { name: "twitter:description", content: "The student-only marketplace. Buy and sell textbooks, electronics, furniture and more with verified university students." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cbfdf756-8462-4e82-acdc-7bbb2738b933/id-preview-9fce8439--793627eb-b34e-4c6c-accc-a0ce0bceb0f2.lovable.app-1781456170668.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cbfdf756-8462-4e82-acdc-7bbb2738b933/id-preview-9fce8439--793627eb-b34e-4c6c-accc-a0ce0bceb0f2.lovable.app-1781456170668.png" },
     ],
     links: [
       {
