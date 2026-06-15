@@ -1,3 +1,4 @@
+--- START OF FILE college-closet-deal-main/src/routes/index.tsx ---
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
@@ -14,8 +15,8 @@ import {
   Sparkles,
   Ticket,
   Zap,
+  Globe,
 } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
@@ -33,10 +34,10 @@ export const Route = createFileRoute("/")({
 });
 
 const categories = [
-  { icon: BookOpen, label: "Textbooks", color: "from-orange-400 to-red-500" },
-  { icon: Laptop, label: "Electronics", color: "from-amber-400 to-orange-500" },
-  { icon: Sofa, label: "Furniture", color: "from-yellow-400 to-amber-500" },
-  { icon: Ticket, label: "Tickets", color: "from-rose-400 to-pink-500" },
+  { icon: BookOpen, label: "Textbooks", color: "from-blue-500/10 to-indigo-500/10 text-indigo-500" },
+  { icon: Laptop, label: "Electronics", color: "from-purple-500/10 to-pink-500/10 text-purple-500" },
+  { icon: Sofa, label: "Furniture", color: "from-emerald-500/10 to-teal-500/10 text-emerald-500" },
+  { icon: Ticket, label: "Tickets", color: "from-rose-500/10 to-red-500/10 text-rose-500" },
 ];
 
 function Landing() {
@@ -51,190 +52,164 @@ function Landing() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-24 lg:pt-20 lg:pb-32">
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -z-0" />
-        <div className="absolute top-1/3 -right-32 w-96 h-96 bg-primary-glow/30 rounded-full blur-[120px] -z-0" />
+      {/* Hero Section */}
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-24 lg:pt-28 lg:pb-32">
+        <div className="absolute top-1/4 -left-32 w-[35rem] h-[35rem] bg-primary/5 rounded-full blur-[140px] -z-10" />
+        <div className="absolute top-1/3 -right-32 w-[35rem] h-[35rem] bg-primary-glow/5 rounded-full blur-[140px] -z-10" />
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center relative">
+        <div className="text-center max-w-4xl mx-auto space-y-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="inline-flex items-center gap-2 bg-muted border border-border px-4 py-1.5 rounded-full"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-2 bg-accent border border-primary/20 rounded-full px-4 py-1.5 mb-6"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-primary" />
-              <span className="text-xs font-semibold text-accent-foreground">Built for students. By students.</span>
-            </motion.div>
+            <Sparkles className="h-3.5 w-3.5 text-primary" />
+            <span className="text-xs font-semibold text-foreground tracking-wide">The Premium Student Marketplace</span>
+          </motion.div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
-              Your campus.{" "}
-              <span className="text-gradient-hero">Your marketplace.</span>
-            </h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]"
+          >
+            Your Campus. <br />
+            <span className="text-gradient-hero">Trade Redefined.</span>
+          </motion.h1>
 
-            <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              UniTrade is the buy & sell platform exclusively for verified university students. Trade textbooks, gadgets, dorm gear, and event tickets — within your campus or across campuses worldwide.
-            </p>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+          >
+            UniTrade is an elegant, secure marketplace built exclusively for verified university students. Exchange textbooks, gear, and student life essentials directly.
+          </motion.p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/auth">
-                <Button size="lg" className="bg-gradient-hero hover:opacity-90 shadow-glow gap-2 h-12 px-6">
-                  Join with university email <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-              <Link to="/auth">
-                <Button size="lg" variant="outline" className="h-12 px-6 border-2">
-                  Browse listings
-                </Button>
-              </Link>
-            </div>
-
-            <div className="mt-8 flex items-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Verified students only</div>
-              <div className="flex items-center gap-2"><Zap className="h-4 w-4 text-primary" /> Instant messaging</div>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="pt-4 flex flex-wrap justify-center gap-4"
+          >
+            <Link to="/auth">
+              <Button size="lg" className="bg-gradient-hero hover:opacity-95 shadow-glow gap-2 h-12 px-8 text-sm font-medium">
+                Verify & Join with .edu <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Link to="/auth">
+              <Button size="lg" variant="outline" className="h-12 px-8 text-sm font-medium border border-border">
+                Explore Campus Deals
+              </Button>
+            </Link>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="pt-12 grid grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl mx-auto text-xs font-medium tracking-wide text-muted-foreground border-t border-border/40"
           >
-            <motion.div
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative rounded-3xl overflow-hidden shadow-glow"
-            >
-              <img src={heroImg} alt="Students trading" width={1536} height={1024} className="w-full h-auto" />
-            </motion.div>
-
-            {/* Floating cards */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
-              className="absolute -left-4 top-1/4 bg-card rounded-2xl shadow-card p-3 flex items-center gap-3 border border-border"
-            >
-              <div className="h-10 w-10 rounded-xl bg-gradient-hero flex items-center justify-center">
-                <ShoppingBag className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground">Sold this week</p>
-                <p className="font-bold text-sm">2,431 items</p>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8 }}
-              className="absolute -right-4 bottom-1/4 bg-card rounded-2xl shadow-card p-3 flex items-center gap-3 border border-border"
-            >
-              <div className="h-10 w-10 rounded-xl bg-secondary flex items-center justify-center">
-                <GraduationCap className="h-5 w-5 text-secondary-foreground" />
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground">Active campuses</p>
-                <p className="font-bold text-sm">120+</p>
-              </div>
-            </motion.div>
+            <div className="flex items-center justify-center gap-2">
+              <ShieldCheck className="h-4.5 w-4.5 text-primary shrink-0" />
+              <span>VERIFIED .EDU ACCOUNTS ONLY</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <Zap className="h-4.5 w-4.5 text-primary shrink-0" />
+              <span>INSTANT MESSAGING & NEGOTIATION</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 col-span-2 md:col-span-1">
+              <Globe className="h-4.5 w-4.5 text-primary shrink-0" />
+              <span>GLOBAL & LOCAL SEARCH</span>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Categories */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold mb-8"
-        >
-          Shop every <span className="text-gradient-hero">student essential</span>
-        </motion.h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight">Curated Essentials</h2>
+          <p className="text-sm text-muted-foreground">Everyday necessities tailored specifically for student success.</p>
+        </div>
+        
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {categories.map((c, i) => (
             <motion.div
               key={c.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-glow transition-shadow cursor-pointer group"
+              transition={{ delay: i * 0.05 }}
+              whileHover={{ y: -4 }}
+              className="bg-card border border-border/80 rounded-xl p-6 shadow-soft hover:shadow-glow hover:border-primary/20 transition-all cursor-pointer group"
             >
-              <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${c.color} flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform`}>
-                <c.icon className="h-7 w-7 text-white" />
+              <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${c.color} flex items-center justify-center mb-4 transition-transform group-hover:scale-105`}>
+                <c.icon className="h-5 w-5" />
               </div>
-              <p className="font-semibold">{c.label}</p>
-              <p className="text-xs text-muted-foreground mt-1">Trending on campus</p>
+              <p className="font-semibold text-base">{c.label}</p>
+              <p className="text-xs text-muted-foreground mt-1">Direct exchange on campus</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* How it works */}
-      <section className="bg-secondary text-secondary-foreground py-24">
+      <section className="bg-muted/40 border-y border-border/50 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl font-bold mb-12 max-w-2xl"
-          >
-            From dorm room to dorm room in three steps.
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="max-w-xl mb-16 space-y-3">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Pure Peer-to-Peer</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">Exchange textbooks, furniture, and tickets safely without third-party fees.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-10">
             {[
-              { icon: GraduationCap, title: "Verify your campus", desc: "Sign up with your .edu or .ac.* email. Your university is added to your profile automatically." },
-              { icon: ShoppingBag, title: "List or browse", desc: "Snap photos, set a price, and post in minutes. Or filter by category and the campus you want to buy from." },
-              { icon: MessageCircle, title: "Chat & meet up", desc: "Message the seller in-app, agree on a price and place, and exchange face to face." },
+              { icon: GraduationCap, title: "1. Academic Verification", desc: "Unlock entry securely using your verified email address. No strangers, just peer students." },
+              { icon: ShoppingBag, title: "2. List Instantly", desc: "Showcase items in minutes with clear fields for conditions, images, and pickup preferences." },
+              { icon: MessageCircle, title: "3. Direct Negotiation", desc: "Chat securely. Set coordinates, negotiate price points, and finalize handoffs seamlessly." },
             ].map((s, i) => (
               <motion.div
                 key={s.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="relative"
+                transition={{ delay: i * 0.1 }}
+                className="space-y-3"
               >
-                <div className="text-7xl font-bold text-primary/20 mb-2">0{i + 1}</div>
-                <s.icon className="h-8 w-8 text-primary mb-3" />
-                <h3 className="text-xl font-bold mb-2">{s.title}</h3>
-                <p className="text-secondary-foreground/70 leading-relaxed">{s.desc}</p>
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-card border border-border text-primary shadow-soft">
+                  <s.icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-lg font-bold">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-24">
+      {/* CTA Section */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-24">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative rounded-3xl bg-gradient-hero p-12 md:p-16 text-center text-primary-foreground overflow-hidden shadow-glow"
+          className="relative rounded-2xl bg-card border border-border p-12 md:p-16 text-center overflow-hidden shadow-soft"
         >
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,white,transparent_50%)]" />
-          <Heart className="h-10 w-10 mx-auto mb-4 opacity-90" />
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to trade with your campus?</h2>
-          <p className="text-lg opacity-90 mb-8 max-w-xl mx-auto">Join thousands of students saving money and making the most of their dorm life.</p>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -z-10" />
+          <Heart className="h-8 w-8 mx-auto mb-4 text-primary" />
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Upgrade Your Student Experience.</h2>
+          <p className="text-base text-muted-foreground mt-3 mb-8 max-w-lg mx-auto">Instant verification gets you trading with trusted peers right away.</p>
           <Link to="/auth">
-            <Button size="lg" variant="secondary" className="h-12 px-8 text-base font-semibold">
-              Get started — it's free
+            <Button size="lg" className="bg-gradient-hero hover:opacity-95 shadow-glow">
+              Get Started Free
             </Button>
           </Link>
         </motion.div>
       </section>
 
-      <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} UniTrade · Made for students
+      <footer className="border-t border-border/60 py-8 text-center text-xs text-muted-foreground tracking-wide">
+        &copy; {new Date().getFullYear()} UniTrade. Built cleanly for university communities.
       </footer>
     </div>
   );
